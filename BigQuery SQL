@@ -1,0 +1,54 @@
+CDC Births Data Query in BigQuery
+In this query I used the CDC Births Data Summary public dataset. The queries I wrote helped me obtain some answers about which counties in the United States have the most and least births in the years 2016-2018.
+
+SELECT 
+  * 
+FROM 
+  `bigquery-public-data.sdoh_cdc_wonder_natality.county_natality` 
+LIMIT 
+  1000
+
+Using the ORDER BY function, I sorted the data by Births.
+SELECT 
+  *
+FROM 
+  `bigquery-public-data.sdoh_cdc_wonder_natality.county_natality` 
+ORDER BY
+  Births
+LIMIT 
+  10
+
+I filtered the query by using the ASC function but it didn’t change.
+SELECT 
+  *
+FROM 
+  `bigquery-public-data.sdoh_cdc_wonder_natality.county_natality` 
+ORDER BY
+  Births
+ASC
+LIMIT 
+  10
+
+So, by filtering the data in descending order using the DESC function, I was able to see the top 10 counties with the highest yearly birth counts between 2016 and 2018.
+SELECT 
+  *
+FROM 
+  `bigquery-public-data.sdoh_cdc_wonder_natality.county_natality` 
+ORDER BY
+  Births
+DESC
+LIMIT 
+  10
+
+Next, I modified the query to show the top 10 counties with the highest birth counts for 2018.
+SELECT 
+  *
+FROM 
+  `bigquery-public-data.sdoh_cdc_wonder_natality.county_natality` 
+WHERE 
+  Year = '2018-01-01'
+ORDER BY
+  Births
+DESC
+LIMIT 
+  10
